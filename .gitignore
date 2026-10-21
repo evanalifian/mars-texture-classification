@@ -1,0 +1,25 @@
+# Python environments
+.venv/
+env/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Generated model artifacts
+results/models/
+
+# Dataset and generated data
+data/raw/
+data/processed/
+
+# Operating system
+.DS_Store
+Thumbs.db
