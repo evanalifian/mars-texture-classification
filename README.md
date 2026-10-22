@@ -1,91 +1,125 @@
-# MarsTexture AI — Klasifikasi Tekstur Permukaan Mars
+# TextureGuard AI — Artificial Texture Defect Classification
 
-Proyek Ujian Tengah Semester (UTS) mata kuliah **Machine Learning** yang berfokus pada klasifikasi citra tekstur permukaan Mars menggunakan ekstraksi fitur berbasis *handcrafted features* dengan PyFeats dan pemodelan klasifikasi otomatis menggunakan PyCaret.
+**TextureGuard AI** is a machine learning project for classifying artificial texture images using handcrafted feature extraction and automated machine learning (AutoML).
 
-## Deskripsi Proyek
+This project uses the **DAGM 2007 dataset**, **PyFeats** for texture feature extraction, and **PyCaret** to compare and evaluate machine learning classification models.
 
-MarsTexture AI merupakan proyek klasifikasi citra yang bertujuan untuk mempelajari karakteristik tekstur permukaan planet Mars melalui pengolahan citra digital dan algoritma Machine Learning.
+> **Project status:** In Development  
+> **Course:** Machine Learning — Midterm Project (UTS)
 
-Proyek ini menggunakan fitur numerik yang diekstraksi dari citra untuk membangun model klasifikasi. PyFeats digunakan untuk memperoleh karakteristik tekstur citra, sedangkan PyCaret digunakan untuk membandingkan beberapa algoritma klasifikasi, memilih model potensial, melakukan *hyperparameter tuning*, dan mengevaluasi performanya.
+## Project Overview
 
-Proyek ini disusun sebagai pemenuhan tugas UTS mata kuliah Machine Learning.
+Texture inspection is an important task in quality control and surface defect analysis. Machine learning can help distinguish defective texture patterns from normal patterns by learning from extracted image features.
 
-## Tujuan
+TextureGuard AI explores a traditional computer vision approach by converting images into numerical feature vectors before applying machine learning classification algorithms.
 
-1. Melakukan pra-pemrosesan citra untuk mempersiapkan data sebelum ekstraksi fitur.
-2. Mengekstraksi fitur tekstur citra menggunakan PyFeats.
-3. Membentuk dataset numerik yang dapat digunakan untuk pemodelan Machine Learning.
-4. Membandingkan performa beberapa algoritma klasifikasi menggunakan PyCaret.
-5. Melakukan *hyperparameter tuning* terhadap minimal dua model terbaik.
-6. Mengevaluasi performa model menggunakan metrik dan visualisasi yang sesuai.
+Instead of relying on deep learning models, this project focuses on **handcrafted features**, such as texture descriptors extracted using PyFeats.
+
+## Objectives
+
+- Explore and preprocess the DAGM 2007 artificial texture dataset.
+- Extract handcrafted texture features using PyFeats.
+- Convert images into a structured tabular dataset.
+- Compare multiple classification algorithms using PyCaret.
+- Tune at least two promising models.
+- Evaluate model performance using appropriate classification metrics.
+- Identify important features when supported by the selected model and evaluation method.
 
 ## Dataset
 
-**Dataset:** AI4MARS — A Dataset for Terrain-Aware Autonomous Driving on Mars
+This project uses the **DAGM 2007 Competition Dataset**, which contains artificially generated textured surfaces with defect annotations.
 
-**Sumber:** [NASA Open Data — AI4MARS](https://data.nasa.gov/dataset/ai4mars-a-dataset-for-terrain-aware-autonomous-driving-on-mars)
+**Dataset source:** [DAGM 2007 Competition](https://conferences.mpi-inf.mpg.de/dagm/2007/prizes.html)
 
-AI4MARS merupakan dataset citra permukaan Mars yang dikembangkan untuk mendukung pengenalan kondisi medan oleh sistem navigasi rover.
+The dataset includes multiple texture classes and corresponding defect information. The selected classes and labeling strategy will be documented during preprocessing.
 
-Dataset ini memiliki label terrain yang dapat digunakan sebagai dasar untuk membentuk tugas klasifikasi tekstur permukaan Mars.
+### Dataset preparation
 
-**Catatan:** AI4MARS menyediakan label dalam bentuk mask segmentasi. Oleh karena itu, diperlukan tahap pemrosesan label untuk menentukan kelas citra atau wilayah citra yang akan diklasifikasikan. Kelas yang digunakan dan jumlah sampel akan dicantumkan setelah proses eksplorasi dataset selesai.
+The preprocessing stage may include:
 
-Dataset asli tidak disertakan langsung dalam repository ini. Silakan unduh dari sumber resmi dan letakkan sesuai struktur direktori proyek.
+1. Selecting the texture classes to be used.
+2. Loading images and their corresponding annotations.
+3. Assigning classification labels based on the experiment design.
+4. Resizing images if necessary.
+5. Converting images to grayscale when required.
+6. Extracting features and creating a tabular dataset.
 
-## Teknologi dan Library
+**Important:** The labeling strategy must match the experiment. For binary classification, the selected samples should have clearly defined `normal` and `defective` labels. Defect masks or annotations should be processed appropriately rather than treated as ordinary image labels.
 
-Proyek ini menggunakan:
+The original dataset is not included in this repository by default. Please obtain it from the dataset source and follow its usage conditions.
 
-- **Python 3.11** — bahasa pemrograman.
-- **OpenCV** — membaca dan melakukan pra-pemrosesan citra.
-- **NumPy** — operasi numerik.
-- **Pandas** — pengolahan tabel fitur.
-- **PyFeats** — ekstraksi fitur tekstur citra.
-- **PyCaret 3.3.2** — pemodelan dan perbandingan algoritma klasifikasi.
-- **Matplotlib** dan **Seaborn** — visualisasi hasil eksperimen.
-- **Jupyter Notebook** — lingkungan eksperimen.
+## Technologies
 
-## Alur Pengerjaan
+| Technology | Purpose |
+|---|---|
+| Python | Main programming language |
+| OpenCV | Image loading and preprocessing |
+| NumPy | Numerical operations |
+| Pandas | Tabular data processing |
+| PyFeats | Handcrafted feature extraction |
+| PyCaret | Automated model comparison and tuning |
+| Matplotlib | Visualization |
+| Seaborn | Statistical visualization |
+| Jupyter Notebook | Experimentation and documentation |
 
-Proses eksperimen dirancang melalui tahapan berikut:
+## Methodology
 
-1. **Dataset Preparation**  
-   Mengunduh dataset, memeriksa struktur citra dan label, serta menentukan kelas yang digunakan.
+The project follows this workflow:
 
-2. **Image Preprocessing**  
-   Membaca citra, mengubah citra menjadi grayscale jika diperlukan, dan menyeragamkan ukuran citra.
+1. **Dataset collection** — Obtain and organize the DAGM 2007 dataset.
+2. **Exploratory data analysis** — Inspect image dimensions, classes, and label distribution.
+3. **Image preprocessing** — Prepare images for feature extraction.
+4. **Feature extraction** — Extract handcrafted features using PyFeats, such as applicable GLCM, LBP, and other texture descriptors.
+5. **Feature dataset construction** — Store the extracted features and their labels in a CSV file.
+6. **Data preparation** — Handle missing values where necessary and split the data into training and testing sets.
+7. **Model comparison** — Use PyCaret to compare classification algorithms.
+8. **Hyperparameter tuning** — Tune at least two promising models.
+9. **Model evaluation** — Evaluate the selected models on held-out test data.
+10. **Result analysis** — Compare model performance and discuss the findings.
 
-3. **Feature Extraction**  
-   Mengekstraksi karakteristik tekstur menggunakan metode PyFeats, seperti GLCM, LBP, atau metode lain yang sesuai.
+### Feature extraction
 
-4. **Feature Dataset Construction**  
-   Menggabungkan hasil ekstraksi menjadi tabel numerik dengan label kelas dan menyimpannya dalam format CSV.
+The extracted feature table is expected to contain numerical features and a target label.
 
-5. **Data Preparation**  
-   Memeriksa nilai yang hilang, nilai tidak valid, distribusi kelas, serta membagi data menjadi data latih dan data uji.
+Example structure:
 
-6. **Model Comparison**  
-   Menggunakan PyCaret untuk membandingkan algoritma klasifikasi berdasarkan metrik evaluasi yang ditentukan.
+| feature_1 | feature_2 | feature_3 | target |
+|---:|---:|---:|---|
+| 0.21 | 14.52 | 0.73 | normal |
+| 0.65 | 21.08 | 0.42 | defective |
 
-7. **Hyperparameter Tuning**  
-   Melakukan optimasi parameter terhadap minimal dua model terbaik berdasarkan hasil perbandingan awal.
+*The values above are illustrative only. Actual feature columns depend on the selected PyFeats functions.*
 
-8. **Model Evaluation**  
-   Mengevaluasi model menggunakan data uji dan menampilkan visualisasi performa.
+### Model development
 
-9. **Conclusion**  
-   Menyusun kesimpulan berdasarkan hasil eksperimen dan perbandingan model.
+PyCaret will be used to compare several classification algorithms. At least two promising models will be selected for hyperparameter tuning.
 
-## Struktur Direktori
+The final algorithms will be determined from the experimental results rather than selected in advance.
+
+## Evaluation Metrics
+
+The evaluation may include:
+
+- **Accuracy** — Overall proportion of correct predictions.
+- **Precision** — Proportion of positive predictions that are correct.
+- **Recall** — Proportion of actual positive samples correctly identified.
+- **F1-score** — Harmonic mean of precision and recall.
+- **Confusion matrix** — Distribution of correct and incorrect predictions.
+- **ROC-AUC** — Ability to distinguish classes when the selected evaluation setup supports it.
+- **Feature importance** — Analysis of influential features for compatible models or explainability methods.
+
+The final report will compare the selected models using consistent evaluation data and metrics.
+
+## Project Structure
 
 ```text
-mars-texture-classification-pyfeats-pycaret/
+textureguard-ai-dagm2007/
 ├── data/
 │   ├── raw/
 │   └── processed/
+│       └── texture_features.csv
 ├── notebooks/
-│   └── main.ipynb
+│   └── 01_uts_machine_learning.ipynb
 ├── results/
 │   ├── figures/
 │   └── metrics/
@@ -94,88 +128,94 @@ mars-texture-classification-pyfeats-pycaret/
 └── .gitignore
 ```
 
-Keterangan:
+Directory purposes:
 
-- `data/raw/` — menyimpan dataset asli dan label yang telah diunduh.
-- `data/processed/` — menyimpan data hasil pemrosesan dan tabel fitur.
-- `notebooks/` — menyimpan notebook eksperimen.
-- `results/figures/` — menyimpan grafik dan visualisasi evaluasi.
-- `results/metrics/` — menyimpan ringkasan metrik hasil eksperimen.
-- `requirements.txt` — mencatat dependensi Python yang digunakan.
+- `data/raw/` — Original dataset files; excluded from Git by default.
+- `data/processed/` — Processed data and extracted features.
+- `notebooks/` — Data exploration, feature extraction, training, and evaluation.
+- `results/figures/` — Visualizations and evaluation plots.
+- `results/metrics/` — Model evaluation results.
+- `requirements.txt` — Project dependencies.
 
-## Instalasi dan Penggunaan
+The structure may evolve as the project develops.
 
-### 1. Clone repository
+## Installation
+
+### Prerequisites
+
+- Python 3.11
+- pip
+- Jupyter Notebook
+- DAGM 2007 dataset files
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/USERNAME/mars-texture-classification-pyfeats-pycaret.git
-cd mars-texture-classification-pyfeats-pycaret
+git clone https://github.com/USERNAME/textureguard-ai-dagm2007.git
+cd textureguard-ai-dagm2007
 ```
 
-Ganti `USERNAME` dengan nama pengguna GitHub pemilik repository.
+Replace `USERNAME` with your GitHub username.
 
-### 2. Buat virtual environment
+### 2. Create a virtual environment
 
-Pastikan Python 3.11 telah terpasang.
-
-Windows:
+On Windows:
 
 ```powershell
 py -3.11 -m venv env
 .\env\Scripts\Activate.ps1
 ```
 
-### 3. Instal dependensi
+If PowerShell blocks script execution, activate the environment using Command Prompt instead:
+
+```bat
+env\Scripts\activate.bat
+```
+
+### 3. Install dependencies
 
 ```bash
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-### 4. Jalankan Jupyter Notebook
+### 4. Launch Jupyter Notebook
 
 ```bash
 jupyter notebook
 ```
 
-Buka notebook pada direktori `notebooks/` dan jalankan setiap cell secara berurutan.
+Open the notebook in the `notebooks/` directory and follow the documented workflow.
 
-### 5. Siapkan dataset
+## Expected Outputs
 
-Unduh AI4MARS dari sumber resminya. Susun gambar dan label sesuai struktur direktori yang digunakan dalam kode eksperimen.
+The project aims to produce:
 
-Pastikan pemetaan label, pembentukan sampel, dan pembagian data dilakukan secara konsisten sebelum pelatihan model.
+- A processed feature dataset in CSV format.
+- A comparison of multiple classification models.
+- Tuned versions of at least two selected models.
+- Confusion matrices and other evaluation visualizations.
+- A comparison of model performance.
+- An analysis of relevant handcrafted features.
+- A conclusion based on the experimental results.
 
-## Evaluasi Model
+These are planned outputs; results will be added after the experiments have been completed.
 
-Performa model akan dievaluasi menggunakan metrik yang sesuai dengan karakteristik dataset dan tugas klasifikasi, meliputi:
+## Notes and Limitations
 
-- **Accuracy** — proporsi prediksi yang benar.
-- **Precision** — ketepatan prediksi pada setiap kelas.
-- **Recall** — kemampuan model mengenali sampel dari setiap kelas.
-- **F1-score** — keseimbangan antara precision dan recall.
-- **Confusion Matrix** — distribusi prediksi benar dan salah.
-- **ROC-AUC** — kemampuan diskriminasi kelas apabila sesuai dengan skema klasifikasi dan skor prediksi yang tersedia.
-- **Feature Importance** — kontribusi fitur pada model yang mendukung analisis tersebut.
+- Results depend on the selected DAGM 2007 classes, sample selection, and labeling strategy.
+- Feature extraction time depends on image resolution, feature descriptors, and the number of images.
+- Data leakage must be avoided when splitting training and testing samples.
+- The final model should be evaluated using held-out data that was not used for model selection or tuning.
+- Dataset usage must comply with the original source's terms.
 
-Hasil akhir, termasuk algoritma terbaik dan nilai metrik, akan ditambahkan setelah eksperimen selesai dilaksanakan.
+## Academic Information
 
-## Status Proyek
+**Project:** TextureGuard AI — Artificial Texture Defect Classification  
+**Course:** Machine Learning  
+**Project Type:** Midterm Examination (UTS)  
+**Academic Year:** 2026
 
-**Status:** Dalam pengembangan
+---
 
-Tahapan yang direncanakan mencakup persiapan dataset, ekstraksi fitur, perbandingan model, optimasi parameter, dan evaluasi akhir.
-
-## Informasi Akademik
-
-- **Nama Proyek:** MarsTexture AI
-- **Repository:** `mars-texture-classification-pyfeats-pycaret`
-- **Mata Kuliah:** Machine Learning
-- **Jenis Kegiatan:** Ujian Tengah Semester (UTS)
-- **Tahun:** 2026
-
-## Lisensi dan Atribusi
-
-Dataset AI4MARS berasal dari sumber eksternal. Penggunaan dan distribusinya harus mengikuti ketentuan lisensi serta atribusi yang ditetapkan oleh penyedia dataset.
-
-Proyek ini merupakan implementasi akademik untuk pembelajaran pengolahan citra dan Machine Learning.
+*Built as an academic project to explore handcrafted texture features and machine learning classification using PyFeats and PyCaret.*
