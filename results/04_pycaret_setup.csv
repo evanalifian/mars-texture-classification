@@ -1,0 +1,25 @@
+Description,Value
+Session id,42
+Target,label
+Target type,Multiclass
+Target mapping,"Class1: 0, Class2: 1, Class3: 2, Class4: 3, Class5: 4, Class6: 5"
+Original data shape,"(4800, 83)"
+Transformed data shape,"(4800, 32)"
+Transformed train set shape,"(3840, 32)"
+Transformed test set shape,"(960, 32)"
+Numeric features,82
+Preprocess,True
+Imputation type,simple
+Numeric imputation,median
+Categorical imputation,mode
+Remove multicollinearity,True
+Multicollinearity threshold,0.95
+Normalize,True
+Normalize method,robust
+Fold Generator,StratifiedKFold
+Fold Number,5
+CPU Jobs,-1
+Use GPU,False
+Log Experiment,False
+Experiment Name,clf-default-name
+USI,e6d2
