@@ -1,0 +1,3 @@
+,CV sebelum tuning,CV hasil tuning,Model yang dipakai,CV model yang dipakai
+Quadratic Discriminant Analysis,0.9977,0.9875,model awal,0.9977
+Gradient Boosting Classifier,0.9891,0.9904,hasil tuning,0.9904
