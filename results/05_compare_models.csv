@@ -1,14 +1,14 @@
 ,Model,Accuracy,AUC,Recall,Prec.,F1,Kappa,MCC,TT (Sec)
-lr,Logistic Regression,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.83
-knn,K Neighbors Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.118
-nb,Naive Bayes,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.08
-dt,Decision Tree Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.104
-svm,SVM - Linear Kernel,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.098
-ridge,Ridge Classifier,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.082
-rf,Random Forest Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.27
-qda,Quadratic Discriminant Analysis,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.08
-gbc,Gradient Boosting Classifier,1.0,0.0,1.0,1.0,1.0,1.0,1.0,3.25
-lda,Linear Discriminant Analysis,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.088
-et,Extra Trees Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.146
-ada,Ada Boost Classifier,0.9997,0.0,0.9997,0.9997,0.9997,0.9997,0.9997,0.442
-dummy,Dummy Classifier,0.1667,0.5,0.1667,0.0278,0.0476,0.0,0.0,0.076
+lr,Logistic Regression,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.63
+knn,K Neighbors Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.522
+nb,Naive Bayes,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5
+dt,Decision Tree Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.564
+svm,SVM - Linear Kernel,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.038
+ridge,Ridge Classifier,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.032
+rf,Random Forest Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.088
+qda,Quadratic Discriminant Analysis,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.03
+gbc,Gradient Boosting Classifier,1.0,0.0,1.0,1.0,1.0,1.0,1.0,1.31
+lda,Linear Discriminant Analysis,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.04
+et,Extra Trees Classifier,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.094
+ada,Ada Boost Classifier,0.9997,0.0,0.9997,0.9997,0.9997,0.9997,0.9997,0.146
+dummy,Dummy Classifier,0.1667,0.5,0.1667,0.0278,0.0476,0.0,0.0,0.034
